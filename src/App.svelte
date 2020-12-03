@@ -26,6 +26,10 @@
       console.log(err);
     }
   };
+
+  const deleteTodo = (id) => {
+    list = list.filter((item) => item.id !== id);
+  };
 </script>
 
 <style>
@@ -47,19 +51,19 @@
     }
   }
 
-  .color-1 {
+  .all-todos {
     color: rgb(27, 26, 26);
     font-family: "Nerko One", cursive;
     font-size: 35px;
   }
 
-  button.color-2 {
+  button.delete-todo {
     color: rgb(23, 31, 31);
     background-color: rgb(8, 134, 82);
     font-size: 25px;
   }
 
-  button.color-2:active {
+  button.delete-todo:active {
     background-color: black;
   }
 
@@ -70,10 +74,11 @@
   .todos-input {
     padding: 1% 1%;
     width: 80%;
+    background-color: rgb(8, 134, 82);
   }
 
   .todos-input:focus {
-    background-color: rgb(8, 134, 82);
+    background-color: rgb(137, 173, 128);
   }
 
   .todo-button {
@@ -103,9 +108,10 @@
 
   <div class="todo">
     {#each list as item, i (item)}
-      <h1 class="color-1">{item.text}</h1>
+      <h1 class="all-todos">{item.text}</h1>
 
-      <button class="color-2"><i class="fas fa-trash" /></button>
+      <button class="delete-todo" on:click={() => deleteTodo(item.id)}><i
+          class="fas fa-trash" /></button>
     {/each}
 
     <div />
