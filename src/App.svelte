@@ -1,15 +1,14 @@
 <script>
   import Navbar from "./Navbar.svelte";
   let todos = "";
-  let item;
   let list = [
-    { id: 0, text: "Wash Your Hands" },
-    { id: 1, text: "Buy Breed" },
+    { id: 0, text: "Wash Your Hands", checked: false },
+    { id: 1, text: "Buy Breed", checked: true },
   ];
 
   const addTodo = async () => {
     if (!todos) {
-      alert("Please Enter Your TODO!");
+      alert("Your Todo Empty");
       return;
     }
 
@@ -20,11 +19,15 @@
             list.map((t) => t.id)
           ) + 1
         : 1;
-      list = [...list, { id: newId, text: todos }];
+      list = [...list, { id: newId, text: todos, checked: false }];
       todos = "";
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const checkTodo = () => {
+    todos.checked ? "done" : "";
   };
 
   const deleteTodo = (id) => {
@@ -59,16 +62,23 @@
 
   button.delete-todo {
     color: rgb(23, 31, 31);
-    background-color: rgb(8, 134, 82);
+    background-color: rgb(255, 0, 0);
     font-size: 25px;
+    width: 45%;
   }
 
   button.delete-todo:active {
     background-color: black;
   }
+  button.check-button {
+    color: rgb(23, 31, 31);
+    background-color: rgb(8, 80, 139);
+    font-size: 25px;
+    width: 45%;
+  }
 
   .todo {
-    display: grid;
+    display: inline;
   }
 
   .todos-input {
@@ -112,6 +122,9 @@
 
       <button class="delete-todo" on:click={() => deleteTodo(item.id)}><i
           class="fas fa-trash" /></button>
+
+      <button class="check-button" on:click={() => checkTodo(item.id)}><i
+          class="fas fa-check-square" /></button>
     {/each}
 
     <div />

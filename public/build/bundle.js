@@ -525,24 +525,31 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[4] = list[i];
-    	child_ctx[8] = i;
+    	child_ctx[8] = list[i];
+    	child_ctx[10] = i;
     	return child_ctx;
     }
 
-    // (110:4) {#each list as item, i (item)}
+    // (120:4) {#each list as item, i (item)}
     function create_each_block(key_1, ctx) {
     	let h1;
-    	let t0_value = /*item*/ ctx[4].text + "";
+    	let t0_value = /*item*/ ctx[8].text + "";
     	let t0;
     	let t1;
-    	let button;
-    	let i_1;
+    	let button0;
+    	let i0;
+    	let t2;
+    	let button1;
+    	let i1;
     	let mounted;
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[6](/*item*/ ctx[4]);
+    		return /*click_handler*/ ctx[6](/*item*/ ctx[8]);
+    	}
+
+    	function click_handler_1() {
+    		return /*click_handler_1*/ ctx[7](/*item*/ ctx[8]);
     	}
 
     	const block = {
@@ -552,38 +559,54 @@ var app = (function () {
     			h1 = element("h1");
     			t0 = text(t0_value);
     			t1 = space();
-    			button = element("button");
-    			i_1 = element("i");
-    			attr_dev(h1, "class", "all-todos svelte-lgnjlm");
-    			add_location(h1, file$1, 110, 6, 2172);
-    			attr_dev(i_1, "class", "fas fa-trash");
-    			add_location(i_1, file$1, 112, 71, 2283);
-    			attr_dev(button, "class", "delete-todo svelte-lgnjlm");
-    			add_location(button, file$1, 112, 6, 2218);
+    			button0 = element("button");
+    			i0 = element("i");
+    			t2 = space();
+    			button1 = element("button");
+    			i1 = element("i");
+    			attr_dev(h1, "class", "all-todos svelte-1d2213g");
+    			add_location(h1, file$1, 120, 6, 2415);
+    			attr_dev(i0, "class", "fas fa-trash");
+    			add_location(i0, file$1, 122, 71, 2526);
+    			attr_dev(button0, "class", "delete-todo svelte-1d2213g");
+    			add_location(button0, file$1, 122, 6, 2461);
+    			attr_dev(i1, "class", "fas fa-check-square");
+    			add_location(i1, file$1, 125, 71, 2644);
+    			attr_dev(button1, "class", "check-button svelte-1d2213g");
+    			add_location(button1, file$1, 125, 6, 2579);
     			this.first = h1;
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
     			append_dev(h1, t0);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, button, anchor);
-    			append_dev(button, i_1);
+    			insert_dev(target, button0, anchor);
+    			append_dev(button0, i0);
+    			insert_dev(target, t2, anchor);
+    			insert_dev(target, button1, anchor);
+    			append_dev(button1, i1);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", click_handler, false, false, false);
+    				dispose = [
+    					listen_dev(button0, "click", click_handler, false, false, false),
+    					listen_dev(button1, "click", click_handler_1, false, false, false)
+    				];
+
     				mounted = true;
     			}
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*list*/ 2 && t0_value !== (t0_value = /*item*/ ctx[4].text + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*list*/ 2 && t0_value !== (t0_value = /*item*/ ctx[8].text + "")) set_data_dev(t0, t0_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h1);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(button);
+    			if (detaching) detach_dev(button0);
+    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(button1);
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -591,7 +614,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(110:4) {#each list as item, i (item)}",
+    		source: "(120:4) {#each list as item, i (item)}",
     		ctx
     	});
 
@@ -620,7 +643,7 @@ var app = (function () {
     	navbar = new Navbar({ $$inline: true });
     	let each_value = /*list*/ ctx[1];
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*item*/ ctx[4];
+    	const get_key = ctx => /*item*/ ctx[8];
     	validate_each_keys(ctx, each_value, get_each_context, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -654,19 +677,19 @@ var app = (function () {
     			attr_dev(link, "href", "https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
     			attr_dev(link, "integrity", "sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p");
     			attr_dev(link, "crossorigin", "anonymous");
-    			add_location(link, file$1, 91, 0, 1688);
+    			add_location(link, file$1, 101, 0, 1931);
     			attr_dev(input, "type", "text");
-    			attr_dev(input, "class", "todos-input svelte-lgnjlm");
+    			attr_dev(input, "class", "todos-input svelte-1d2213g");
     			attr_dev(input, "placeholder", "Your Todo");
-    			add_location(input, file$1, 99, 4, 1926);
-    			attr_dev(button, "class", "todo-button svelte-lgnjlm");
-    			add_location(button, file$1, 105, 4, 2040);
-    			add_location(div0, file$1, 98, 2, 1916);
-    			add_location(div1, file$1, 116, 4, 2346);
-    			attr_dev(div2, "class", "todo svelte-lgnjlm");
-    			add_location(div2, file$1, 108, 2, 2112);
-    			attr_dev(main, "class", "svelte-lgnjlm");
-    			add_location(main, file$1, 96, 0, 1894);
+    			add_location(input, file$1, 109, 4, 2169);
+    			attr_dev(button, "class", "todo-button svelte-1d2213g");
+    			add_location(button, file$1, 115, 4, 2283);
+    			add_location(div0, file$1, 108, 2, 2159);
+    			add_location(div1, file$1, 129, 4, 2714);
+    			attr_dev(div2, "class", "todo svelte-1d2213g");
+    			add_location(div2, file$1, 118, 2, 2355);
+    			attr_dev(main, "class", "svelte-1d2213g");
+    			add_location(main, file$1, 106, 0, 2137);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -707,7 +730,7 @@ var app = (function () {
     				set_input_value(input, /*todos*/ ctx[0]);
     			}
 
-    			if (dirty & /*deleteTodo, list*/ 10) {
+    			if (dirty & /*checkTodo, list, deleteTodo*/ 26) {
     				const each_value = /*list*/ ctx[1];
     				validate_each_argument(each_value);
     				validate_each_keys(ctx, each_value, get_each_context, get_key);
@@ -753,12 +776,19 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
     	let todos = "";
-    	let item;
-    	let list = [{ id: 0, text: "Wash Your Hands" }, { id: 1, text: "Buy Breed" }];
+
+    	let list = [
+    		{
+    			id: 0,
+    			text: "Wash Your Hands",
+    			checked: false
+    		},
+    		{ id: 1, text: "Buy Breed", checked: true }
+    	];
 
     	const addTodo = async () => {
     		if (!todos) {
-    			alert("Please Enter Your TODO!");
+    			alert("Your Todo Empty");
     			return;
     		}
 
@@ -767,11 +797,15 @@ var app = (function () {
     			? Math.max.apply(null, list.map(t => t.id)) + 1
     			: 1;
 
-    			$$invalidate(1, list = [...list, { id: newId, text: todos }]);
+    			$$invalidate(1, list = [...list, { id: newId, text: todos, checked: false }]);
     			$$invalidate(0, todos = "");
     		} catch(err) {
     			console.log(err);
     		}
+    	};
+
+    	const checkTodo = () => {
+    		todos.checked ? "done" : "";
     	};
 
     	const deleteTodo = id => {
@@ -790,19 +824,19 @@ var app = (function () {
     	}
 
     	const click_handler = item => deleteTodo(item.id);
+    	const click_handler_1 = item => checkTodo(item.id);
 
     	$$self.$capture_state = () => ({
     		Navbar,
     		todos,
-    		item,
     		list,
     		addTodo,
+    		checkTodo,
     		deleteTodo
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("todos" in $$props) $$invalidate(0, todos = $$props.todos);
-    		if ("item" in $$props) $$invalidate(4, item = $$props.item);
     		if ("list" in $$props) $$invalidate(1, list = $$props.list);
     	};
 
@@ -810,7 +844,16 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [todos, list, addTodo, deleteTodo, item, input_input_handler, click_handler];
+    	return [
+    		todos,
+    		list,
+    		addTodo,
+    		checkTodo,
+    		deleteTodo,
+    		input_input_handler,
+    		click_handler,
+    		click_handler_1
+    	];
     }
 
     class App extends SvelteComponentDev {
